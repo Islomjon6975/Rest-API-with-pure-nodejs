@@ -11,18 +11,19 @@ const books = [
 
 const server = http.createServer((req, res) => {
     // Get all books
-    if(req.url === '/books' && req.method === 'GET') {
-        res.writeHead(200, {
-            "Content-Type": "application/json charset=utf8"
-        })
+    if(req.url === "/books" && req.method === "GET") {
+        res.writeHead(200, {"Content-Type": "application/json charset=utf8"})
         const resp = {
-            status: 'OK',
+            status: "OK",
             books
         }
-        res.end(JSON.stringify(resp))
-    } else if (req.url === '/books' && req.method === "POST") {
-        
+    
+        req.end(JSON.stringify(resp));
+    } else if(req.url === "/books" && req.method === "POST") {
+
     }
 });
 
-server.listen(3001, () => console.log("Server running on port : 3000"))
+const PORT = process.env.PORT || 3000;
+
+server.listen(PORT, () => console.log(`Server running on port: ${PORT}`));
